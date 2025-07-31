@@ -23,4 +23,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run export script
-        run: python path/to/script.py
+        run: python news_fetcher.py
