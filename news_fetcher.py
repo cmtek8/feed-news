@@ -18,7 +18,7 @@ local_tz = datetime.now().astimezone().tzinfo
 
 # Assicuriamoci che la cartella di output esista
 BASE_DIR.mkdir(parents=True, exist_ok=True)
-HTML_PATH = BASE_DIR / "news_feed.html"
+HTML_PATH = BASE_DIR / "index.html"
 
 # Numero di articoli per pagina
 ITEMS_PER_PAGE = 20
