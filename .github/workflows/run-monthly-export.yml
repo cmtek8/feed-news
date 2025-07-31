@@ -1,0 +1,19 @@
+name: Run Monthly Export Script
+
+on:
+  schedule:
+    - cron: '0 22 1 * *'
+
+jobs:
+  run-export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run export script
+        run: python path/to/script.py
