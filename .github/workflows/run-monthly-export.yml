@@ -1,19 +1,26 @@
-name: Run Monthly Export Script
+name: Run Hourly Export Script
 
+# Trigger: ogni ora, al minuto 0, più possibilità di lancio manuale
 on:
   schedule:
-    - cron: '0 22 1 * *'
+    - cron: '0 * * * *'      # ogni ora allo scoccare del minuto 0 (UTC)
+  workflow_dispatch:        # permette esecuzione manuale da Actions ➔ Run workflow
 
 jobs:
   run-export:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run export script
         run: python path/to/script.py
