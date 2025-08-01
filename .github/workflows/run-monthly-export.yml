@@ -1,10 +1,9 @@
-name: Run Hourly Export Script
+name: Run Export Script Twice Daily
 
-# Trigger: ogni ora, al minuto 0, più possibilità di lancio manuale
 on:
   schedule:
-    - cron: '0 * * * *'      # ogni ora allo scoccare del minuto 0 (UTC)
-  workflow_dispatch:        # permette esecuzione manuale da Actions ➔ Run workflow
+    - cron: '0 */12 * * *'    # ogni 12 ore allo scoccare del minuto 0 (UTC): 00:00 e 12:00
+  workflow_dispatch:         # permette esecuzione manuale
 
 jobs:
   run-export:
