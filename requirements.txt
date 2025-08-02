@@ -2,4 +2,4 @@ feedparser
 beautifulsoup4
 requests
 newspaper3k
-pip freeze > requirements.txt
+
