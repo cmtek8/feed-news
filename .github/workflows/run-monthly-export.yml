@@ -8,7 +8,6 @@ on:
 jobs:
   run-export:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,8 +17,20 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install system deps & configure Italian locale
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y locales
+          sudo locale-gen it_IT.UTF-8
+          sudo update-locale LANG=it_IT.UTF-8
 
-      - name: Run export script
-        run: python news_fetcher.py
+      - name: Install dependencies (verbose)
+        run: |
+          set -eux
+          pip install -r requirements.txt --verbose
+
+      - name: Run export script (verbose)
+        run: |
+          set -eux
+          python news_fetcher.py
+
