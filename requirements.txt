@@ -2,4 +2,5 @@ feedparser
 beautifulsoup4
 requests
 newspaper3k
+deep-translator
 
